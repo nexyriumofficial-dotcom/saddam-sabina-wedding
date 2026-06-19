@@ -3,95 +3,234 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Saddam ❤️ Sabina Wedding</title>
 
 <style>
-body{
+*{
 margin:0;
-padding:20px;
+padding:0;
+box-sizing:border-box;
 font-family:Arial,sans-serif;
-background:#fff5f7;
+}
+
+body{
+background:linear-gradient(135deg,#ffdde1,#ee9ca7);
+overflow-x:hidden;
 text-align:center;
 }
 
-.card{
-max-width:500px;
-margin:auto;
+#formPage{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.form-box{
 background:white;
+padding:25px;
+border-radius:20px;
+width:90%;
+max-width:350px;
+box-shadow:0 0 20px rgba(0,0,0,.2);
+}
+
+input{
+width:100%;
+padding:12px;
+margin:10px 0;
+border:1px solid #ccc;
+border-radius:10px;
+}
+
+button{
+padding:12px 20px;
+border:none;
+border-radius:10px;
+background:#e91e63;
+color:white;
+font-size:18px;
+}
+
+#invitePage{
+display:none;
+}
+
+.hero{
+padding:30px;
+color:white;
+background:rgba(0,0,0,.3);
+}
+
+.hero h1{
+font-size:40px;
+animation:zoom 2s infinite alternate;
+}
+
+@keyframes zoom{
+from{transform:scale(1);}
+to{transform:scale(1.1);}
+}
+
+.gallery img{
+width:90%;
+max-width:400px;
+border-radius:20px;
+margin:20px 0;
+box-shadow:0 0 20px rgba(0,0,0,.3);
+}
+
+.card{
+background:white;
+margin:20px;
 padding:20px;
 border-radius:20px;
-box-shadow:0 0 15px rgba(0,0,0,0.1);
-}
-
-img{
-width:220px;
-height:220px;
-border-radius:50%;
-object-fit:cover;
-margin-bottom:15px;
-}
-
-h1{
-color:#b03a5b;
 }
 
 .btn{
 display:inline-block;
 padding:12px 20px;
-background:#b03a5b;
+margin:10px;
+background:#e91e63;
 color:white;
 text-decoration:none;
 border-radius:10px;
-margin:10px;
 }
 
-marquee{
+.heart{
+position:fixed;
 color:red;
-font-size:22px;
+font-size:25px;
+animation:fall 5s linear infinite;
+}
+
+@keyframes fall{
+0%{transform:translateY(-100px);}
+100%{transform:translateY(100vh);}
+}
+
+.firework{
+position:fixed;
+font-size:35px;
+animation:boom 2s infinite;
+}
+
+@keyframes boom{
+0%{transform:scale(.5);}
+50%{transform:scale(1.5);}
+100%{transform:scale(.5);}
+}
+
+.countdown{
+font-size:28px;
 font-weight:bold;
-margin-bottom:15px;
+color:#e91e63;
+margin-top:15px;
 }
 </style>
 </head>
 
 <body>
 
-<marquee>❤️ Saddam Gouri & Sabina Banu Wedding Invitation ❤️</marquee>
+<div id="formPage">
+<div class="form-box">
+<h2>💍 Wedding Invitation</h2>
+
+<input type="text" placeholder="Your Name">
+
+<button onclick="openInvite()">
+Open Invitation ❤️
+</button>
+</div>
+</div>
+
+<div id="invitePage">
+
+<div class="hero">
+<h1>Saddam ❤️ Sabina</h1>
+<h2>Wedding Invitation</h2>
+</div>
 
 <div class="card">
-
-<img src="DSC_3099.JPG" alt="Wedding Photo">
-
-<h1>💍 Saddam Gouri ❤️ Sabina Banu</h1>
-
 <h2>بسم الله الرحمن الرحيم</h2>
 
 <p>आप सादर आमंत्रित हैं हमारे निकाह समारोह में।</p>
 
-<h3>📅 27 जनवरी 2026</h3>
+<h2>📅 27 जनवरी 2026</h2>
+<h2>🕛 दोपहर 12:00 बजे</h2>
 
-<h3>⏰ दोपहर 12:00 बजे</h3>
+<h3>📍 विजय मैरिज गार्डन, पीपाड़ सिटी</h3>
 
-<p>
-📍 विजय मैरिज गार्डन<br>
-पिपाड़ सिटी
-</p>
+<a class="btn" href="https://maps.google.com">
+Location
+</a>
 
-<a class="btn" href="https://maps.google.com">Location</a>
+<a class="btn" href="tel:7296899341">
+Call
+</a>
 
-<a class="btn" href="tel:7296899341">Call</a>
+<div class="countdown" id="countdown"></div>
+</div>
 
-<p>वालिद: मोहम्मद सलीम</p>
+<div class="gallery">
+<img src="DSC_3099.JPG">
+<img src="DSC_3108.JPG">
+</div>
 
-<p>वालिद: जाकिर</p>
-
+<div class="card">
 <h2>आपकी मौजूदगी हमारे लिए खुशी का सबब होगी ❤️</h2>
+</div>
+
+<audio id="music" autoplay loop>
+<source src="Afusic_-_Pal_Pal__Lofi_version__.mp3" type="audio/mpeg">
+</audio>
 
 </div>
 
-<audio autoplay loop controls>
-<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-</audio>
+<script>
+
+function openInvite(){
+document.getElementById("formPage").style.display="none";
+document.getElementById("invitePage").style.display="block";
+
+document.getElementById("music").play();
+}
+
+for(let i=0;i<40;i++){
+let h=document.createElement("div");
+h.innerHTML="❤️";
+h.className="heart";
+h.style.left=Math.random()*100+"%";
+h.style.animationDuration=(3+Math.random()*5)+"s";
+document.body.appendChild(h);
+}
+
+for(let i=0;i<6;i++){
+let f=document.createElement("div");
+f.innerHTML="🎆";
+f.className="firework";
+f.style.left=Math.random()*100+"%";
+f.style.top=Math.random()*100+"%";
+document.body.appendChild(f);
+}
+
+var countDownDate=new Date("Jan 27, 2026 12:00:00").getTime();
+
+setInterval(function(){
+
+var now=new Date().getTime();
+
+var distance=countDownDate-now;
+
+var days=Math.floor(distance/(1000*60*60*24));
+
+document.getElementById("countdown").innerHTML=
+"⏳ "+days+" Days Remaining";
+
+},1000);
+
+</script>
 
 </body>
 </html>
